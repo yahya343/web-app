@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:ws": "node server/chat-ws.mjs",
     "dev:all": "concurrently \"next dev\" \"node server/chat-ws.mjs\"",
-    "build": "next build",
+    "build": "echo 'Skipping web build, using pre-built out folder'",
     "start": "next start",
     "stitch:fetch": "node scripts/fetch-stitch.mjs",
     "seed": "curl -X POST http://localhost:3000/api/seed",
