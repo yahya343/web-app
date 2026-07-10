@@ -1,0 +1,62 @@
+{
+  "name": "omagh-phone-vape",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:ws": "node server/chat-ws.mjs",
+    "dev:all": "concurrently \"next dev\" \"node server/chat-ws.mjs\"",
+    "build": "next build",
+    "start": "next start",
+    "stitch:fetch": "node scripts/fetch-stitch.mjs",
+    "seed": "curl -X POST http://localhost:3000/api/seed",
+    "test": "vitest run",
+    "export": "node scripts/prepare-export.mjs && next build && node scripts/restore-api.mjs",
+    "export:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true});require('fs').rmSync('out',{recursive:true,force:true})\"",
+    "export:prod": "npm run export:clean && npm run export",
+    "cap:sync": "npx cap sync",
+    "cap:copy": "npx cap copy",
+    "mobile:build": "npm run export:prod && npm run cap:sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@splinetool/react-spline": "^4.1.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "concurrently": "^10.0.3",
+    "framer-motion": "^12.41.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.21.0",
+    "mongoose": "^9.7.4",
+    "next": "^16.2.10",
+    "next-auth": "^5.0.0-beta.31",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.6.0",
+    "three": "^0.171.0",
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.1",
+    "@google/stitch-sdk": "^0.3.5",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.171.0",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^29.1.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.9"
+  },
+  "optionalDependencies": {
+    "@next/swc-win32-x64-msvc": "^16.2.9"
+  }
+}
